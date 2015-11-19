@@ -10,7 +10,6 @@ import it.sauronsoftware.ftp4j.FTPException;
 import it.sauronsoftware.ftp4j.FTPFile;
 import it.sauronsoftware.ftp4j.FTPIllegalReplyException;
 import it.sauronsoftware.ftp4j.FTPListParseException;
-import it.sauronsoftware.ftp4j.FTPListParser;
 public class ftpClient {
 	
 	FTPClient client = new FTPClient();
@@ -89,7 +88,7 @@ public class ftpClient {
 	
 	
 
-	public void connect() throws IllegalStateException, IOException, FTPIllegalReplyException, FTPException
+	public FTPClient connect() throws IllegalStateException, IOException, FTPIllegalReplyException, FTPException
 	{
 		if(client.getHost() == null)
 		{
@@ -103,6 +102,7 @@ public class ftpClient {
 		client.login(login, password);
 		}
 		else System.out.println("Connection has been established!!!");
+		return client;
 	}
 	
 	public void printContent() throws IllegalStateException, IOException, FTPIllegalReplyException, FTPException, FTPDataTransferException, FTPAbortedException, FTPListParseException
